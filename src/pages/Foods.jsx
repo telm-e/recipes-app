@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchHeader from '../components/SearchHeader';
+import FoodSearchHeader from '../components/FoodSearchHeader';
 
 function Foods() {
   return (
     <div>
-      <SearchHeader />
+      <FoodSearchHeader />
       Foods
     </div>
   );

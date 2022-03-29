@@ -1,7 +1,13 @@
 import React from 'react';
+import DrinkSearchHeader from '../components/DrinkSearchHeader';
 
-const Drinks = () => {
-  <div>Drinks</div>;
-};
+function Drinks() {
+  return (
+    <div>
+      <DrinkSearchHeader />
+      Drinks
+    </div>
+  );
+}
 
 export default Drinks;
