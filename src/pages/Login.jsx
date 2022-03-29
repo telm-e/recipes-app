@@ -18,7 +18,6 @@ const Login = () => {
   // para rodar a validação toda vez que esses estados mudarem.
   useEffect(() => {
     const flag = validator.isEmail(email) && password.length > MIN;
-    console.log(flag);
     if (flag) {
       setIsDisabled(false);
     } else {
