@@ -1,20 +1,21 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import rockGlass from './images/rockGlass.svg';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import UserProvider from './context/UserProvider';
+import Foods from './pages/Foods';
+import Login from './pages/Login';
 
+// fazer as rotas encapsuladas pelo UserProvider, que disponibiliza o contexto,
+// o contexto contém os valores (states, handlers) que, por sua vez são disponibilizados para children.
 function App() {
   return (
-    <div className="meals">
-      <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object>
-    </div>
+    <UserProvider>
+      <Switch>
+        <Route exact path="/" component={ Login } />
+        <Route path="/foods" component={ Foods } />
+      </Switch>
+    </UserProvider>
   );
 }
 
