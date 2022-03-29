@@ -1,8 +1,12 @@
 import React from 'react';
+import SearchHeader from '../components/SearchHeader';
 
 function Foods() {
   return (
-    <div>Foods</div>
+    <div>
+      <SearchHeader />
+      Foods
+    </div>
   );
 }
 
