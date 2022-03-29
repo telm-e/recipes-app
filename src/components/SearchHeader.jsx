@@ -1,10 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
+import recepiesContext from '../context/recepiesContext';
+import getFoodByIngredient from '../services/APIcalls/getFoodByIngredient';
+import getFoodByName from '../services/APIcalls/getFoodByName';
+import getFoodByFirstLetter from '../services/APIcalls/getFoodByFirstLetter';
 
 function SearchHeader() {
   const [searchLabel, setSearchLabel] = useState('');
   const [searchInput, setSearchInput] = useState('');
-  console.log([searchInput, searchLabel]);
+  const { setRecepies } = useContext(recepiesContext);
+
+  const onSearchClick = async () => {
+    console.log([searchInput, searchLabel]);
+    if (searchLabel === 'ingredient') {
+      const recepiesData = await getFoodByIngredient(searchInput);
+      setRecepies(recepiesData);
+    }
+    if (searchLabel === 'name') {
+      const recepiesData = await getFoodByName(searchInput);
+      setRecepies(recepiesData);
+    }
+    if (searchLabel === 'first-letter') {
+      if (searchInput.length > 1) {
+        // eslint-disable-next-line no-alert
+        alert('Your search must have only 1 (one) character');
+      } else {
+        const recepiesData = await getFoodByFirstLetter(searchInput);
+        setRecepies(recepiesData);
+      }
+    }
+  };
 
   return (
     <div>
@@ -18,8 +43,8 @@ function SearchHeader() {
           type="radio"
           data-testid="ingredient-search-radio"
           name="search"
-          id="ingredients"
-          value="ingredients"
+          id="ingredient"
+          value="ingredient"
         />
         Ingredient
         <input
@@ -40,6 +65,7 @@ function SearchHeader() {
       <button
         type="button"
         data-testid="exec-search-btn"
+        onClick={ onSearchClick }
       >
         Search
       </button>

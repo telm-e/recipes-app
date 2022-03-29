@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProvider from './context/UserProvider';
+import RecepiesProvider from './context/RecepiesProvider';
 import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
@@ -20,24 +21,26 @@ import Nationalities from './pages/Nationalities';
 function App() {
   return (
     <UserProvider>
-      <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route path="/foods" component={ Foods } />
-        <Route path="/drinks" component={ Drinks } />
-        <Route path="/foods/:id" component={ Details } />
-        <Route path="/drinks/:id" component={ Details } />
-        <Route path="/foods/:id/in-progress" component={ InProgress } />
-        <Route path="/drinks/:id/in-progress" component={ InProgress } />
-        <Route path="/explore" component={ Explore } />
-        <Route path="/explore/foods" component={ Explore } />
-        <Route path="/explore/drinks" component={ Explore } />
-        <Route path="/explore/foods/ingredients" component={ Ingredients } />
-        <Route path="/explore/drinks/ingredients" component={ Ingredients } />
-        <Route path="/explore/foods/nationalities" component={ Nationalities } />
-        <Route path="/profile" component={ Profile } />
-        <Route path="/done-recipes" component={ DoneRecipes } />
-        <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-      </Switch>
+      <RecepiesProvider>
+        <Switch>
+          <Route exact path="/" component={ Login } />
+          <Route path="/foods" component={ Foods } />
+          <Route path="/drinks" component={ Drinks } />
+          <Route path="/foods/:id" component={ Details } />
+          <Route path="/drinks/:id" component={ Details } />
+          <Route path="/foods/:id/in-progress" component={ InProgress } />
+          <Route path="/drinks/:id/in-progress" component={ InProgress } />
+          <Route path="/explore" component={ Explore } />
+          <Route path="/explore/foods" component={ Explore } />
+          <Route path="/explore/drinks" component={ Explore } />
+          <Route path="/explore/foods/ingredients" component={ Ingredients } />
+          <Route path="/explore/drinks/ingredients" component={ Ingredients } />
+          <Route path="/explore/foods/nationalities" component={ Nationalities } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+        </Switch>
+      </RecepiesProvider>
     </UserProvider>
   );
 }
