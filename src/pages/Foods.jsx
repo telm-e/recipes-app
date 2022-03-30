@@ -13,8 +13,10 @@ function Foods() {
         <div>
           { loading ? <Loading /> : (
             <div>
-              { recepies.meals.length === 0 ? global.alert('VIXE') : (
-                <FoodSearchResults />) }
+              { recepies.meals === null
+                ? global.alert('Sorry, we haven\'t found any recipes for these filters.')
+                : (
+                  <FoodSearchResults />) }
             </div>)}
         </div>
       )}

@@ -25,6 +25,7 @@ function FoodSearchHeader() {
     if (searchLabel === 'ingredient') {
       setLoading(true);
       const recepiesData = await getFoodByIngredient(searchInput);
+      console.log(recepiesData);
       setRecepies(recepiesData);
       setSearchStatus(true);
       setLoading(false);
