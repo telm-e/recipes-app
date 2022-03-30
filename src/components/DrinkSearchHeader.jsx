@@ -13,26 +13,39 @@ function DrinkSearchHeader() {
 
   // resgata a função que armazena as receitas no estado global
   // do context API
-  const { setRecepies } = useContext(recepiesContext);
+  const {
+    setRecepies,
+    setSearchStatus,
+    setLoading,
+  } = useContext(recepiesContext);
 
   const onSearchClick = async () => {
     // para cada caso de label, salva os dados retornados da API
     // no context API
     if (searchLabel === 'ingredient') {
+      setLoading(true);
       const recepiesData = await getDrinkByIngredient(searchInput);
-      setRecepies(recepiesData);
       console.log(recepiesData);
+      setRecepies(recepiesData);
+      setSearchStatus(true);
+      setLoading(false);
     }
     if (searchLabel === 'name') {
+      setLoading(true);
       const recepiesData = await getDrinksByName(searchInput);
       setRecepies(recepiesData);
+      setSearchStatus(true);
+      setLoading(false);
     }
     if (searchLabel === 'first-letter') {
       if (searchInput.length > 1) {
         global.alert('Your search must have only 1 (one) character');
       } else {
+        setLoading(true);
         const recepiesData = await getDrinkByFirstLetter(searchInput);
         setRecepies(recepiesData);
+        setSearchStatus(true);
+        setLoading(false);
       }
     }
   };
