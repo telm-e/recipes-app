@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const Drinks = () => {
-  <div>Drinks</div>;
-};
-
-export default Drinks;
+export default function Drinks() {
+  return (
+    <div>
+      <Header title="Drinks" search profile />
+    </div>
+  );
+}

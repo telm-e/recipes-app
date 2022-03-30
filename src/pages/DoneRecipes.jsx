@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const DoneRecipes = () => {
-  <h2>DoneRecipes</h2>;
-};
-
-export default DoneRecipes;
+export default function DoneRecipes() {
+  return (
+    <div>
+      <Header title="Done Recipes" search={ false } profile />
+    </div>
+  );
+}

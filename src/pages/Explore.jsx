@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const Explore = () => {
-  <div>Explore</div>;
-};
-
-export default Explore;
+export default function Explore() {
+  return (
+    <div>
+      <Header title="Explore" search={ false } profile />
+    </div>
+  );
+}
