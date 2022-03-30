@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const Nationalities = () => {
-  <div>Nationalities</div>;
-};
-
-export default Nationalities;
+export default function Nationalities() {
+  return (
+    <div>
+      <Header title=" Explore Nationalities" search profile />
+    </div>
+  );
+}

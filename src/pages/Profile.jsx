@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const Profile = () => {
-  <div>Profile</div>;
-};
-
-export default Profile;
+export default function Profile() {
+  return (
+    <div>
+      <Header title="Profile" search={ false } profile />
+    </div>
+  );
+}
