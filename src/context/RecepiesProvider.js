@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import RecepiesContext from './recepiesContext';
 
 const RecepiesProvider = ({ children }) => {
-  const [recepies, setRecepies] = useState([]);
+  const [recepies, setRecepies] = useState({ meals: [], drinks: [] });
+  const [searchStatus, setSearchStatus] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Setar o retorno da API de receias pra q ele possa ser passado via Provider
   // e ser utilizado dentro da aplicação para renderizar receitas
 
-  const context = { recepies, setRecepies };
+  const context = {
+    recepies,
+    setRecepies,
+    searchStatus,
+    setSearchStatus,
+    loading,
+    setLoading,
+  };
 
   return (
     <RecepiesContext.Provider value={ context }>

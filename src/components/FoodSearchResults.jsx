@@ -1,21 +1,46 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import recepiesContext from '../context/recepiesContext';
 
-function SearchMain() {
+function FoodSearchResults() {
   // resgata os dados que armazenam as receitas no estado global
   // do context API
   const { recepies } = useContext(recepiesContext);
-  const arrayLength = recepies.meals.length;
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const arrLength = recepies.meals.length;
+    const MAX_ARR_LENGTH = 12;
+    if (arrLength > MAX_ARR_LENGTH) {
+      const newArr = recepies.meals.splice((arrLength - MAX_ARR_LENGTH), MAX_ARR_LENGTH);
+      console.log(newArr);
+      setData(newArr);
+    } else {
+      const newArr = recepies.meals;
+      setData(newArr);
+    }
+  }, [recepies]);
 
   return (
-    // renderiza cartões de receitas
-    { (loading ? <Loading /> : (
-      (arrayLength === 0)
-      <main>
-        
-      </main>
-    )}
-  )
+    <div>
+      { (data.length === 1)
+          && <Redirect to={ `/foods/${recepies.meals[0].idMeal}` } /> }
+      { (data.map((each, index) => (
+        <div key={ each.idMeal } data-testid={ `${index}-recipe-card` }>
+          <img
+            data-testid={ `${index}-card-img` }
+            src={ each.strMealThumb }
+            alt={ `${each.name}` }
+          />
+          <p data-testid={ `${index}-card-name` }>
+            {each.strMeal}
+          </p>
+        </div>
+      ))
+      ) }
+    </div>
+  );
+}
 
-export default SearchMain;
+export default FoodSearchResults;
