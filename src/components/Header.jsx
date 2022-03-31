@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import recepiesContext from '../context/recepiesContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
 export default function Header({ title, profile, search }) {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const { isSearchDisabled, setIsSearchDisabled } = useContext(recepiesContext);
   const history = useHistory();
+
   return (
     // Faz o direcionamento para a pagina Profile
     <div>
@@ -31,7 +33,10 @@ export default function Header({ title, profile, search }) {
         // botão de busca que, ao ser clicado, a barra de busca deve aparecer. O mesmo serve para escondê-la
         <button
           type="button"
-          onClick={ () => setIsDisabled(!isDisabled) }
+          onClick={ () => {
+            setIsSearchDisabled(!isSearchDisabled);
+            console.log(isSearchDisabled);
+          } }
         >
           <img
             data-testid="search-top-btn"
@@ -40,11 +45,11 @@ export default function Header({ title, profile, search }) {
           />
         </button>
       )}
-      {isDisabled && (
+      {/* {isDisabled && (
         <div>
           <input type="text" data-testid="search-input" />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

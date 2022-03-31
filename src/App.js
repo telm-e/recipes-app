@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProvider from './context/UserProvider';
+import RecepiesProvider from './context/RecepiesProvider';
 import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
@@ -25,27 +26,32 @@ import InProgressDrinks from './pages/InProgressDrinks';
 function App() {
   return (
     <UserProvider>
-      <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route exact path="/foods" component={ Foods } />
-        <Route exact path="/drinks" component={ Drinks } />
-        <Route path="/foods/:id" component={ FoodsDetails } />
-        <Route path="/foods/:id" component={ DrinksDetails } />
-        <Route path="/foods/:id/in-progress" component={ InProgressFoods } />
-        <Route path="/drinks/:id/in-progress" component={ InProgressDrinks } />
-        <Route exact path="/explore" component={ Explore } />
-        <Route exact path="/explore/foods" component={ ExploreFoods } />
-        <Route exact path="/explore/drinks" component={ ExploreDrinks } />
-        <Route path="/explore/foods/ingredients" component={ ExploreFoodsIngredients } />
-        <Route
-          path="/explore/drinks/ingredients"
-          component={ ExploreDrinksIngredients }
-        />
-        <Route path="/explore/foods/nationalities" component={ Nationalities } />
-        <Route path="/profile" component={ Profile } />
-        <Route path="/done-recipes" component={ DoneRecipes } />
-        <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-      </Switch>
+      <RecepiesProvider>
+        <Switch>
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/foods" component={ Foods } />
+          <Route exact path="/drinks" component={ Drinks } />
+          <Route path="/foods/:id" component={ FoodsDetails } />
+          <Route path="/foods/:id" component={ DrinksDetails } />
+          <Route path="/foods/:id/in-progress" component={ InProgressFoods } />
+          <Route path="/drinks/:id/in-progress" component={ InProgressDrinks } />
+          <Route exact path="/explore" component={ Explore } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+          <Route
+            path="/explore/foods/ingredients"
+            component={ ExploreFoodsIngredients }
+          />
+          <Route
+            path="/explore/drinks/ingredients"
+            component={ ExploreDrinksIngredients }
+          />
+          <Route path="/explore/foods/nationalities" component={ Nationalities } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+        </Switch>
+      </RecepiesProvider>
     </UserProvider>
   );
 }
