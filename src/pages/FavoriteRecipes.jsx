@@ -1,7 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
-const FavoriteRecipes = () => {
-  <div>FavoriteRecipes</div>;
-};
-
-export default FavoriteRecipes;
+export default function FavoriteRecipes() {
+  return (
+    <div>
+      <Header title="Favorite Recipes" search={ false } profile />
+    </div>
+  );
+}

@@ -25,7 +25,7 @@ function DrinkSearchHeader() {
     if (searchLabel === 'ingredient') {
       setLoading(true);
       const recepiesData = await getDrinkByIngredient(searchInput);
-      console.log(recepiesData);
+      console.log(searchInput);
       setRecepies(recepiesData);
       setSearchStatus(true);
       setLoading(false);

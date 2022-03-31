@@ -6,6 +6,7 @@ const RecepiesProvider = ({ children }) => {
   const [recepies, setRecepies] = useState({ meals: [], drinks: [] });
   const [searchStatus, setSearchStatus] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isSearchDisabled, setIsSearchDisabled] = useState(false);
 
   // Setar o retorno da API de receias pra q ele possa ser passado via Provider
   // e ser utilizado dentro da aplicação para renderizar receitas
@@ -17,6 +18,8 @@ const RecepiesProvider = ({ children }) => {
     setSearchStatus,
     loading,
     setLoading,
+    isSearchDisabled,
+    setIsSearchDisabled,
   };
 
   return (

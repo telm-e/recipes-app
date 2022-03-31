@@ -25,7 +25,7 @@ function DrinkSearchResults() {
   return (
     <div>
       { (data.length === 1)
-          && <Redirect to={ `/foods/${recepies.drinks[0].idDrink}` } /> }
+          && <Redirect to={ `/drinks/${recepies.drinks[0].idDrink}` } /> }
       { (data.map((each, index) => (
         <div key={ each.idDrink } data-testid={ `${index}-recipe-card` }>
           <img
