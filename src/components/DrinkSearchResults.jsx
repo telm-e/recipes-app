@@ -13,7 +13,7 @@ function DrinkSearchResults() {
     const arrLength = recepies.drinks.length;
     const MAX_ARR_LENGTH = 12;
     if (arrLength > MAX_ARR_LENGTH) {
-      const newArr = recepies.drinks.splice((arrLength - MAX_ARR_LENGTH), MAX_ARR_LENGTH);
+      const newArr = recepies.drinks.splice(0, MAX_ARR_LENGTH);
       console.log(newArr);
       setData(newArr);
     } else {

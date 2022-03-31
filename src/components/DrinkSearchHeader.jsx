@@ -54,6 +54,7 @@ function DrinkSearchHeader() {
     // renderiza formulário de pesquisa do SearchHeader
     <div>
       <input
+        data-testid="search-input"
         type="text"
         placeholder="Search recipe"
         onChange={ ({ target }) => setSearchInput(target.value) } // linha 44 e 46: salva o input e a label de pesquisa no estado local

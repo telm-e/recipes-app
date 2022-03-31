@@ -27,7 +27,7 @@ function Drinks() {
             <div>
               { loading ? <Loading /> : (
                 <div>
-                  { recepies.drinks === undefined
+                  { (recepies.drinks === undefined) || (recepies.drinks === null)
                     ? global.alert(notFoundAlert)
                     : (
                       <DrinkSearchResults />) }
