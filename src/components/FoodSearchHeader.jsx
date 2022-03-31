@@ -55,6 +55,7 @@ function FoodSearchHeader() {
     <div>
       <input
         type="text"
+        data-testid="search-input"
         placeholder="Search recipe"
         onChange={ ({ target }) => setSearchInput(target.value) } // linha 44 e 46: salva o input e a label de pesquisa no estado local
       />
