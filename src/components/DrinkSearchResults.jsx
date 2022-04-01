@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import recepiesContext from '../context/recepiesContext';
+import Card from './Card';
 
 function DrinkSearchResults() {
   // resgata os dados que armazenam as receitas no estado global
@@ -27,16 +28,13 @@ function DrinkSearchResults() {
       { (data.length === 1)
           && <Redirect to={ `/drinks/${recepies.drinks[0].idDrink}` } /> }
       { (data.map((each, index) => (
-        <div key={ each.idDrink } data-testid={ `${index}-recipe-card` }>
-          <img
-            data-testid={ `${index}-card-img` }
-            src={ each.strDrinkThumb }
-            alt={ `${each.strDrink}` }
-          />
-          <p data-testid={ `${index}-card-name` }>
-            {each.strDrink}
-          </p>
-        </div>
+        <Card
+          key={ index }
+          index={ index }
+          id={ each.idMeal }
+          img={ each.strMealThumb }
+          name={ each.strMeal }
+        />
       ))
       ) }
     </div>
