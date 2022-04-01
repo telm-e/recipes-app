@@ -31,9 +31,9 @@ function DrinkSearchResults() {
         <Card
           key={ index }
           index={ index }
-          id={ each.idMeal }
-          img={ each.strMealThumb }
-          name={ each.strMeal }
+          id={ each.idDrink }
+          img={ each.strDrinkThumb }
+          name={ each.strDrink }
         />
       ))
       ) }
