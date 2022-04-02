@@ -10,7 +10,7 @@ import Drinks from './pages/Drinks';
 import FoodsDetails from './pages/FoodsDetails';
 import DrinksDetails from './pages/DrinksDetails';
 import Explore from './pages/Explore';
-import ExploreFoods from './pages/ExplorerFoods';
+import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreFoodsIngredients from './pages/ExploreFoodsIngredients';
 import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
@@ -30,9 +30,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/foods" component={ Foods } />
-          <Route path="/foods/:id" component={ FoodsDetails } />
           <Route exact path="/drinks" component={ Drinks } />
-          <Route path="/foods/:id" component={ DrinksDetails } />
+          <Route path="/foods/:id" component={ FoodsDetails } />
+          <Route path="/drinks/:id" component={ DrinksDetails } />
           <Route path="/foods/:id/in-progress" component={ InProgressFoods } />
           <Route path="/drinks/:id/in-progress" component={ InProgressDrinks } />
           <Route exact path="/explore" component={ Explore } />
