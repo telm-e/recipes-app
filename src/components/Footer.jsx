@@ -29,7 +29,7 @@ const Footer = () => {
         />
       </Link>
 
-      <Link to="/">
+      <Link to="/explore">
         <img
           src={ exploreIcon }
           data-testid="explore-bottom-btn"
