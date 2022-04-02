@@ -6,7 +6,7 @@ import mealIcon from '../images/mealIcon.svg';
 
 const Footer = () => {
   const styleFooter = {
-    backgroundColor: 'green',
+    backgroundColor: 'grey',
     position: 'fixed',
     width: '100vw',
     marginTop: '68.995vh',
