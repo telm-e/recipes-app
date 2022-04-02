@@ -21,7 +21,7 @@ const Footer = () => {
       style={ styleFooter }
     >
 
-      <Link to="/">
+      <Link to="/drinks">
         <img
           src={ drinkIcon }
           data-testid="drinks-bottom-btn"
