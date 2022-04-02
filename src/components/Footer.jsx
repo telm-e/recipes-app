@@ -36,7 +36,7 @@ const Footer = () => {
           alt="exploreIcon"
         />
       </Link>
-      <Link to="/">
+      <Link to="/foods">
         <img
           src={ mealIcon }
           data-testid="food-bottom-btn"
