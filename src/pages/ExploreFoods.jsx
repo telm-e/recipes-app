@@ -7,7 +7,8 @@ import { getRandomMeal } from '../services/APIcalls/getRandom';
 function ExploreFoods() {
   const history = useHistory();
 
-  const handleClick = async () => {
+  // redirecionar para a tela de detalhes de uma comida aleatória so clicar
+  const handleSurpriseMeClick = async () => {
     const { idMeal } = await getRandomMeal();
     history.push(`/foods/${idMeal}`);
   };
@@ -19,21 +20,21 @@ function ExploreFoods() {
         data-testid="explore-by-ingredient"
         type="button"
         value="By Ingredient"
-        onClick={ () => {
-          history.push('/explore/foods/ingredients');
-        } }
+        // Redirecionar para a tela de explorar por ingredientes
+        onClick={ () => { history.push('/explore/foods/ingredients'); } }
       />
       <Button
         data-testid="explore-by-nationality"
         type="button"
         value="By Nationality"
+        // Redirecionar para a tela de explorar por nacionalidades
         onClick={ () => { history.push('/explore/foods/nationalities'); } }
       />
       <Button
         data-testid="explore-surprise"
         type="button"
         value="Surprise me!"
-        onClick={ handleClick }
+        onClick={ handleSurpriseMeClick }
       />
       {/* <Footer /> */}
     </>

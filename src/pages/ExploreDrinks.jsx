@@ -8,7 +8,7 @@ const ExploreDrinks = () => {
   const history = useHistory();
 
   // redirecionar para a tela de detalhes de uma bebida aleatória
-  const handleClick = async () => {
+  const handleSurpriseMeClick = async () => {
     const { idDrink } = await getRandomDrink();
     history.push(`/drinks/${idDrink}`);
   };
@@ -27,7 +27,7 @@ const ExploreDrinks = () => {
         data-testid="explore-surprise"
         type="button"
         value="Surprise me!"
-        onClick={ handleClick }
+        onClick={ handleSurpriseMeClick }
       />
       {/* <Footer /> */}
     </>
