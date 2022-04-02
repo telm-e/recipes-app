@@ -5,11 +5,20 @@ import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
 const Footer = () => {
-  const teste = 'test';
-  console.log(teste);
+  const styleFooter = {
+    backgroundColor: 'green',
+    position: 'fixed',
+    width: '100vw',
+    marginTop: '68.995vh',
+    marginBottom: '0',
+    display: 'flex',
+    justifyContent: 'space-around',
+  };
+
   return (
     <footer
       data-testid="footer"
+      style={ styleFooter }
     >
 
       <Link to="/">
