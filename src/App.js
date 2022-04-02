@@ -3,41 +3,55 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import UserProvider from './context/UserProvider';
+import RecepiesProvider from './context/RecepiesProvider';
 import Login from './pages/Login';
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
-import Details from './pages/Details';
+import FoodsDetails from './pages/FoodsDetails';
+import DrinksDetails from './pages/DrinksDetails';
 import Explore from './pages/Explore';
-import Ingredients from './pages/Ingredients';
+import ExploreFoods from './pages/ExplorerFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
+import ExploreFoodsIngredients from './pages/ExploreFoodsIngredients';
+import ExploreDrinksIngredients from './pages/ExploreDrinksIngredients';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
-import InProgress from './pages/InProgress';
+import InProgressFoods from './pages/InProgressFoods';
 import Nationalities from './pages/Nationalities';
+import InProgressDrinks from './pages/InProgressDrinks';
 
 // fazer as rotas encapsuladas pelo UserProvider, que disponibiliza o contexto,
 // o contexto contém os valores (states, handlers) que, por sua vez são disponibilizados para children.
 function App() {
   return (
     <UserProvider>
-      <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route path="/foods" component={ Foods } />
-        <Route path="/drinks" component={ Drinks } />
-        <Route path="/foods/:id" component={ Details } />
-        <Route path="/drinks/:id" component={ Details } />
-        <Route path="/foods/:id/in-progress" component={ InProgress } />
-        <Route path="/drinks/:id/in-progress" component={ InProgress } />
-        <Route path="/explore" component={ Explore } />
-        <Route path="/explore/foods" component={ Explore } />
-        <Route path="/explore/drinks" component={ Explore } />
-        <Route path="/explore/foods/ingredients" component={ Ingredients } />
-        <Route path="/explore/drinks/ingredients" component={ Ingredients } />
-        <Route path="/explore/foods/nationalities" component={ Nationalities } />
-        <Route path="/profile" component={ Profile } />
-        <Route path="/done-recipes" component={ DoneRecipes } />
-        <Route path="/favorite-recipes" component={ FavoriteRecipes } />
-      </Switch>
+      <RecepiesProvider>
+        <Switch>
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/foods" component={ Foods } />
+          <Route path="/foods/:id" component={ FoodsDetails } />
+          <Route exact path="/drinks" component={ Drinks } />
+          <Route path="/foods/:id" component={ DrinksDetails } />
+          <Route path="/foods/:id/in-progress" component={ InProgressFoods } />
+          <Route path="/drinks/:id/in-progress" component={ InProgressDrinks } />
+          <Route exact path="/explore" component={ Explore } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+          <Route
+            path="/explore/foods/ingredients"
+            component={ ExploreFoodsIngredients }
+          />
+          <Route
+            path="/explore/drinks/ingredients"
+            component={ ExploreDrinksIngredients }
+          />
+          <Route path="/explore/foods/nationalities" component={ Nationalities } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route path="/favorite-recipes" component={ FavoriteRecipes } />
+        </Switch>
+      </RecepiesProvider>
     </UserProvider>
   );
 }
