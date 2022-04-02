@@ -4,6 +4,7 @@ import DrinkSearchHeader from '../components/DrinkSearchHeader';
 import DrinkSearchResults from '../components/DrinkSearchResults';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Drinks() {
   const {
@@ -36,6 +37,7 @@ function Drinks() {
         </div>
       )}
       ;
+      <Footer />
     </div>
   );
 }
