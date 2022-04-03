@@ -1,10 +1,9 @@
-import React from 'react';
-import Header from '../components/Header';
+// import React from 'react';
+// import Header from '../components/Header';
+// import getDrinksIngredientsList from '../services/APIcalls/getDrinksIngredientsList';
 
-export default function ExploreFoodsIngredients() {
-  return (
-    <div>
-      <Header title="Explore Ingredients" search={ false } profile />
-    </div>
-  );
-}
+const ExploreFoodsIngredients = () => {
+
+};
+
+export default ExploreFoodsIngredients;
