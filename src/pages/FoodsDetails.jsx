@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FoodsDetails = (props) => {
+function FoodsDetails(props) {
   const { match: { params: { id } } } = props;
   return (
     <div>
@@ -10,10 +10,11 @@ const FoodsDetails = (props) => {
     </div>
 
   );
-};
+}
 
 FoodsDetails.propTypes = {
   id: PropTypes.string,
   props: PropTypes.string,
 }.isRequired;
+
 export default FoodsDetails;

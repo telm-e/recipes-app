@@ -5,7 +5,7 @@ import DrinkSearchResults from '../components/DrinkSearchResults';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import getDrinksByName from '../services/APIcalls/getDrinksByName';
-import Card from '../components/Card';
+import DrinkCard from '../components/DrinkCard';
 
 function Drinks() {
   const {
@@ -51,7 +51,7 @@ function Drinks() {
         : (
           <div>
             { (data.map((each, index) => (
-              <Card
+              <DrinkCard
                 key={ index }
                 index={ index }
                 id={ each.idDrink }
