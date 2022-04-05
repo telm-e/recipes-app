@@ -5,14 +5,23 @@ import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
 const Footer = () => {
-  const teste = 'test';
-  console.log(teste);
+  const styleFooter = {
+    backgroundColor: 'grey',
+    position: 'fixed',
+    width: '100vw',
+    marginTop: '-255px',
+    marginBottom: 0,
+    display: 'flex',
+    justifyContent: 'space-around',
+  };
+
   return (
     <footer
       data-testid="footer"
+      style={ styleFooter }
     >
 
-      <Link to="/">
+      <Link to="/drinks">
         <img
           src={ drinkIcon }
           data-testid="drinks-bottom-btn"
@@ -20,14 +29,14 @@ const Footer = () => {
         />
       </Link>
 
-      <Link to="/">
+      <Link to="/explore">
         <img
           src={ exploreIcon }
           data-testid="explore-bottom-btn"
           alt="exploreIcon"
         />
       </Link>
-      <Link to="/">
+      <Link to="/foods">
         <img
           src={ mealIcon }
           data-testid="food-bottom-btn"

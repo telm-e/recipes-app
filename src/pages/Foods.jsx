@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Footer from '../components/Footer';
 import recepiesContext from '../context/recepiesContext';
 import FoodSearchHeader from '../components/FoodSearchHeader';
 import FoodSearchResults from '../components/FoodSearchResults';
@@ -7,6 +6,7 @@ import Loading from '../components/Loading';
 import Header from '../components/Header';
 import FoodMainData from '../components/FoodMainData';
 import FoodCategories from '../components/FoodCategories';
+import Footer from '../components/Footer';
 
 function Foods() {
   const {
@@ -39,7 +39,6 @@ function Foods() {
         : (
           <FoodMainData />
         )}
-      ;
       <Footer />
     </div>
   );

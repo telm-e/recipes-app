@@ -4,6 +4,7 @@ import DrinkSearchHeader from '../components/DrinkSearchHeader';
 import DrinkSearchResults from '../components/DrinkSearchResults';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import DrinkCategories from '../components/DrinkCategories';
 import DrinkMainData from '../components/DrinkMainData';
 
@@ -22,22 +23,29 @@ function Drinks() {
       <div>
         <Header title="Drinks" search profile />
       </div>
-      { isSearchDisabled
-          && <DrinkSearchHeader />}
+      {
+        isSearchDisabled && <DrinkSearchHeader />
+      }
       <DrinkCategories />
-      { searchStatus ? (
-        <div>
-          { loading ? <Loading /> : (
-            <div>
-              { recepies.drinks === null
-                ? global.alert(notFoundAlert)
-                : (
-                  <DrinkSearchResults />) }
-            </div>)}
-        </div>)
-        : (
-          <DrinkMainData />
-        )}
+      {
+        searchStatus ? (
+          <div>
+            {
+              loading ? <Loading /> : (
+                <div>
+                  {
+                    recepies.drinks === null ? global.alert(notFoundAlert) : (
+                      <DrinkSearchResults />)
+                  }
+                </div>
+              )
+            }
+          </div>)
+          : (
+            <DrinkMainData />
+          )
+      }
+      <Footer />
     </div>
   );
 }

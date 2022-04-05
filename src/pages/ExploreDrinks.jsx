@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../components/Button';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { getRandomDrink } from '../services/APIcalls/getRandom';
 
 const ExploreDrinks = () => {
@@ -29,7 +30,7 @@ const ExploreDrinks = () => {
         value="Surprise me!"
         onClick={ handleSurpriseMeClick }
       />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
