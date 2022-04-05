@@ -41,6 +41,15 @@ function FoodCategories() {
           { each.strCategory }
         </button>
       ))}
+      <button
+        id="all"
+        key="5"
+        type="button"
+        data-testid="All-category-filter"
+        onClick={ () => setSearchCategory('') }
+      >
+        All
+      </button>
     </div>
   );
 }
