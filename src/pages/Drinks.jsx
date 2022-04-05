@@ -4,6 +4,8 @@ import DrinkSearchHeader from '../components/DrinkSearchHeader';
 import DrinkSearchResults from '../components/DrinkSearchResults';
 import Loading from '../components/Loading';
 import Header from '../components/Header';
+import DrinkCategories from '../components/DrinkCategories';
+import DrinkMainData from '../components/DrinkMainData';
 
 function Drinks() {
   const {
@@ -12,30 +14,30 @@ function Drinks() {
     recepies,
     isSearchDisabled,
   } = useContext(recepiesContext);
+
   const notFoundAlert = 'Sorry, we haven\'t found any recipes for these filters.';
+
   return (
     <div>
       <div>
         <Header title="Drinks" search profile />
       </div>
-      { isSearchDisabled && (
+      { isSearchDisabled
+          && <DrinkSearchHeader />}
+      <DrinkCategories />
+      { searchStatus ? (
         <div>
-          <div>
-            <DrinkSearchHeader />
-          </div>
-          { searchStatus && (
+          { loading ? <Loading /> : (
             <div>
-              { loading ? <Loading /> : (
-                <div>
-                  { (recepies.drinks === undefined) || (recepies.drinks === null)
-                    ? global.alert(notFoundAlert)
-                    : (
-                      <DrinkSearchResults />) }
-                </div>)}
+              { recepies.drinks === null
+                ? global.alert(notFoundAlert)
+                : (
+                  <DrinkSearchResults />) }
             </div>)}
-        </div>
-      )}
-      ;
+        </div>)
+        : (
+          <DrinkMainData />
+        )}
     </div>
   );
 }
