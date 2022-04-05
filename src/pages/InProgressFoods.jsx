@@ -5,7 +5,7 @@ const InProgressFoods = (props) => {
   const { match: { params: { id } } } = props;
   return (
     <div>
-      InProgressFoods;
+      InProgressFoods - Start
       { id }
     </div>
 
