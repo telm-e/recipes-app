@@ -9,8 +9,8 @@ const Footer = () => {
     backgroundColor: 'grey',
     position: 'fixed',
     width: '100vw',
-    marginTop: '68.995vh',
-    marginBottom: '0',
+    marginTop: '-255px',
+    marginBottom: 0,
     display: 'flex',
     justifyContent: 'space-around',
   };

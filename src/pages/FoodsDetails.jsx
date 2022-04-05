@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FoodsDetails = (props) => {
+function FoodsDetails(props) {
   const { match: { params: { id } } } = props;
   // Desenvolva um botão de nome "Start Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
   const style = {
@@ -58,10 +58,11 @@ const FoodsDetails = (props) => {
     </div>
 
   );
-};
+}
 
 FoodsDetails.propTypes = {
   id: PropTypes.string,
   props: PropTypes.string,
 }.isRequired;
+
 export default FoodsDetails;
