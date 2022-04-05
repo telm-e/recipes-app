@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Footer from '../components/Footer';
 import recepiesContext from '../context/recepiesContext';
 import FoodSearchHeader from '../components/FoodSearchHeader';
 import FoodSearchResults from '../components/FoodSearchResults';
@@ -39,6 +40,7 @@ function Foods() {
           <FoodMainData />
         )}
       ;
+      <Footer />
     </div>
   );
 }
