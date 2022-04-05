@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 const Card = (props) => {
   const { index, id, img, name } = props;
   return (
-    <Link to={ `/foods/${id}` }>
-      <div data-testid={ `${index}-recipe-card` }>
+    <Link
+      to={ `/foods/${id}` }
+      data-testid={ `${index}-recipe-card` }
+    >
+      <div>
         <img
           data-testid={ `${index}-card-img` }
           src={ img }

@@ -21,7 +21,7 @@ function DrinkMainData() {
         const arrLength = recepiesData.drinks.length;
         const MAX_ARR_LENGTH = 12;
         if (arrLength > MAX_ARR_LENGTH) {
-          const newArr = recepiesData.drinks.splice(0, MAX_ARR_LENGTH);
+          const newArr = recepiesData.drinks.slice(0, MAX_ARR_LENGTH);
           setData(newArr);
         } else {
           const newArr = recepiesData.drinks;
@@ -34,7 +34,7 @@ function DrinkMainData() {
         const arrLength = categoryData.drinks.length;
         const MAX_ARR_LENGTH = 12;
         if (arrLength > MAX_ARR_LENGTH) {
-          const newArr = categoryData.drinks.splice(0, MAX_ARR_LENGTH);
+          const newArr = categoryData.drinks.slice(0, MAX_ARR_LENGTH);
           setData(newArr);
         } else {
           const newArr = categoryData.drinks;

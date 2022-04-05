@@ -21,7 +21,7 @@ function FoodMainData() {
         const arrLength = recepiesData.meals.length;
         const MAX_ARR_LENGTH = 12;
         if (arrLength > MAX_ARR_LENGTH) {
-          const newArr = recepiesData.meals.splice(0, MAX_ARR_LENGTH);
+          const newArr = recepiesData.meals.slice(0, MAX_ARR_LENGTH);
           setData(newArr);
         } else {
           const newArr = recepiesData.meals;
@@ -34,7 +34,7 @@ function FoodMainData() {
         const arrLength = categoryData.meals.length;
         const MAX_ARR_LENGTH = 12;
         if (arrLength > MAX_ARR_LENGTH) {
-          const newArr = categoryData.meals.splice(0, MAX_ARR_LENGTH);
+          const newArr = categoryData.meals.slice(0, MAX_ARR_LENGTH);
           setData(newArr);
         } else {
           const newArr = categoryData.meals;

@@ -16,7 +16,7 @@ function FoodCategories() {
       // dados para renderizar botões de categoria
       const CATEGORIES_NUMBER = 5;
       const recepiesCategories = await getFoodCategorie();
-      const cat = recepiesCategories.meals.splice(0, CATEGORIES_NUMBER);
+      const cat = recepiesCategories.meals.slice(0, CATEGORIES_NUMBER);
       setCategories(cat);
     })();
   }, []);

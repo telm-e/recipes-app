@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DrinksDetails = (props) => {
+function DrinksDetails(props) {
   const { match: { params: { id } } } = props;
   return (
     <div>
-      Drinks Details
+      DrinkDetails;
       { id }
     </div>
+
   );
-};
+}
+
 DrinksDetails.propTypes = {
   id: PropTypes.string,
   props: PropTypes.string,
 }.isRequired;
+
 export default DrinksDetails;

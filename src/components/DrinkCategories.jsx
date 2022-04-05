@@ -15,7 +15,7 @@ function DrinkCategories() {
     (async () => {
       const CATEGORIES_NUMBER = 5;
       const recepiesCategories = await getDrinkCategories();
-      const cat = recepiesCategories.drinks.splice(0, CATEGORIES_NUMBER);
+      const cat = recepiesCategories.drinks.slice(0, CATEGORIES_NUMBER);
       setCategories(cat);
     })();
   }, []);

@@ -9,14 +9,16 @@ const DrinkCard = (props) => {
       to={ `/drinks/${id}` }
       data-testid={ `${index}-recipe-card` }
     >
-      <img
-        data-testid={ `${index}-card-img` }
-        src={ img }
-        alt={ `${name}` }
-      />
-      <p data-testid={ `${index}-card-name` }>
-        { name }
-      </p>
+      <div>
+        <img
+          data-testid={ `${index}-card-img` }
+          src={ img }
+          alt={ `${name}` }
+        />
+        <p data-testid={ `${index}-card-name` }>
+          { name }
+        </p>
+      </div>
     </Link>
   );
 };
