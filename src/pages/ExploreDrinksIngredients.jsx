@@ -32,7 +32,7 @@ const ExploreDrinksIngredients = () => {
         <Header title="Explore Ingredients" search={ false } profile />
       </div>
       {
-        drinksIngredientsList.map((ing) => (
+        drinksIngredientsList.map((ing, i) => (
           <button
             type="button"
             key={ ing }
@@ -43,6 +43,7 @@ const ExploreDrinksIngredients = () => {
               name={ ing }
               key={ ing }
               src={ `https://www.thecocktaildb.com/images/ingredients/${ing}-Small.png` }
+              index={ i }
             />
           </button>
         ))
