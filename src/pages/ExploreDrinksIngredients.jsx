@@ -32,23 +32,20 @@ const ExploreDrinksIngredients = () => {
         <Header title="Explore Ingredients" search={ false } profile />
       </div>
       {
-        drinksIngredientsList.map((ing) => {
-          console.log(ing);
-          return (
-            <button
-              type="button"
-              key={ ing }
+        drinksIngredientsList.map((ing) => (
+          <button
+            type="button"
+            key={ ing }
+            onClick={ () => handleIngredientCardClick(ing) }
+          >
+            <IngredientCard
               onClick={ () => handleIngredientCardClick(ing) }
-            >
-              <IngredientCard
-                onClick={ () => handleIngredientCardClick(ing) }
-                name={ ing }
-                key={ ing }
-                src={ `https://www.thecocktaildb.com/images/ingredients/${ing}-Small.png` }
-              />
-            </button>
-          );
-        })
+              name={ ing }
+              key={ ing }
+              src={ `https://www.thecocktaildb.com/images/ingredients/${ing}-Small.png` }
+            />
+          </button>
+        ))
       }
     </>
   );
