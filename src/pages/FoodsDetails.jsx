@@ -48,16 +48,7 @@ function FoodsDetails(props) {
     .filter((item) => ((item[1]) && item[1] !== ' ' ? item[1] : false))
     .map((item) => item[1]);
 
-  const recipe = {
-    id,
-    type: 'food',
-    nationality: strArea,
-    category: strCategory,
-    alcoholicOrNot: '',
-    name: strMeal,
-    image: strMealThumb,
-  };
-    // Desenvolva um botão de nome "Start Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
+  // Desenvolva um botão de nome "Start Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
   const style = {
     position: 'fixed',
     bottom: '0',
@@ -76,7 +67,19 @@ function FoodsDetails(props) {
         <div>
           <h1 data-testid="recipe-title">{ strMeal }</h1>
           <ButtonShare path={ history.location.pathname } />
-          <ButtonFavorite recipe={ recipe } />
+          <ButtonFavorite
+            id={ id }
+            testid="favorite-btn"
+            favoriteRecipe={ {
+              id,
+              type: 'food',
+              nationality: strArea,
+              category: strCategory,
+              alcoholicOrNot: '',
+              name: strMeal,
+              image: strMealThumb,
+            } }
+          />
         </div>
         <h3 data-testid="recipe-category" style={ { color: 'gray' } }>{ strCategory }</h3>
         <div>

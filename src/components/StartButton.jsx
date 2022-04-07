@@ -21,7 +21,7 @@ export default function StartButton(props) {
     <button
       style={
         {
-          backgroundColor: 'rgb(0,255,0)',
+          backgroundColor: '',
           border: 'none',
           width: '100%',
           height: '8vh',
