@@ -16,10 +16,46 @@ function Drinks() {
     recepies,
     isSearchDisabled,
   } = useContext(recepiesContext);
-  const { filteredDrinks } = useContext(FiltersContext);
+
+  const { filteredDrinks, hasIngredients } = useContext(FiltersContext);
 
   const notFoundAlert = 'Sorry, we haven\'t found any recipes for these filters.';
-  console.log(filteredDrinks);
+
+  const filteredByIngredients = filteredDrinks.map(
+    ({ idDrink, strDrink, strDrinkThumb }, i) => (
+      <button
+        key={ idDrink }
+        type="button"
+        data-testid={ `${i}-recipe-card` }
+      >
+        <p data-testid={ `${i}-card-name` }>{strDrink}</p>
+        <img
+          data-testid={ `${i}-card-img` }
+          src={ strDrinkThumb }
+          alt={ strDrink }
+        />
+      </button>
+    ),
+  );
+
+  const defaultPage = searchStatus
+    ? (
+      <div>
+        {
+          loading ? <Loading /> : (
+            <div>
+              {
+                recepies.drinks === null ? global.alert(notFoundAlert) : (
+                  <DrinkSearchResults />)
+              }
+            </div>
+          )
+        }
+      </div>
+    ) : (
+      <DrinkMainData />
+    );
+
   return (
     <div>
       <div>
@@ -29,35 +65,18 @@ function Drinks() {
         isSearchDisabled && <DrinkSearchHeader />
       }
       <DrinkCategories />
-
       {
-        filteredDrinks?.map(({ idDrink, strDrink, strDrinkThumb }) => (
-          <button key={ idDrink } type="button">
-            <p>{strDrink}</p>
-            <img src={ strDrinkThumb } alt={ strDrink } />
-          </button>
-        ))
-      }
-
-      {
-        searchStatus
+        hasIngredients
           ? (
-            <div>
-              {
-                loading ? <Loading /> : (
-                  <div>
-                    {
-                      recepies.drinks === null ? global.alert(notFoundAlert) : (
-                        <DrinkSearchResults />)
-                    }
-                  </div>
-                )
-              }
-            </div>
+
+            filteredByIngredients
+
           ) : (
-            <DrinkMainData />
+
+            defaultPage
           )
       }
+
       <Footer />
     </div>
   );

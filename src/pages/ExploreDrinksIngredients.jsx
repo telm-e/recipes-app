@@ -1,3 +1,4 @@
+/* eslint react-hooks/exhaustive-deps: 0 */
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
@@ -8,7 +9,8 @@ import FiltersContext from '../context/filtersContext';
 const ExploreDrinksIngredients = () => {
   const [drinksIngredientsList, setDrinksIngredientsList] = useState([]);
   const history = useHistory();
-  const { handleDrinksIngredientCardClick } = useContext(FiltersContext);
+  const { handleDrinksIngredientCardClick,
+    setHasIngredients, setFilteredDrinks } = useContext(FiltersContext);
 
   // Chamar o fetch getDrinksIngredientsList() e setDrinksIngredientsList,
   // as componentDidMount, array sem dependências.
@@ -17,12 +19,14 @@ const ExploreDrinksIngredients = () => {
       const allIngredientsList = await getDrinksIngredientsList();
       const NUM = 12;
       const ingredientList = allIngredientsList.slice(0, NUM);
+      setFilteredDrinks([]);
       setDrinksIngredientsList(ingredientList);
     })();
   }, []);
 
   const handleIngredientCardClick = (ing) => {
     handleDrinksIngredientCardClick(ing);
+    setHasIngredients(true);
     history.push('/drinks');
   };
 
@@ -31,15 +35,16 @@ const ExploreDrinksIngredients = () => {
       <div>
         <Header title="Explore Ingredients" search={ false } profile />
       </div>
+
       {
         drinksIngredientsList.map((ing, i) => (
           <button
+            data-testid={ `${i}-ingredient-card` }
             type="button"
             key={ ing }
             onClick={ () => handleIngredientCardClick(ing) }
           >
             <IngredientCard
-              onClick={ () => handleIngredientCardClick(ing) }
               name={ ing }
               key={ ing }
               src={ `https://www.thecocktaildb.com/images/ingredients/${ing}-Small.png` }

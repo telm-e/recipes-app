@@ -5,6 +5,7 @@ import FiltersContext from './filtersContext';
 
 const FiltersProvider = ({ children }) => {
   const [filteredDrinks, setFilteredDrinks] = useState([]);
+  const [hasIngredients, setHasIngredients] = useState(false);
 
   const handleDrinksIngredientCardClick = async (ingredient) => {
     const drinksByIngredients = await getDrinkByIngredient(ingredient);
@@ -12,12 +13,15 @@ const FiltersProvider = ({ children }) => {
     const NUM = 12;
     const drinks2Render = drinks.slice(0, NUM);
     setFilteredDrinks(drinks2Render);
-    // console.log(filteredDrinks);
+    console.log(drinks2Render);
   };
 
   const context = {
     filteredDrinks,
     handleDrinksIngredientCardClick,
+    hasIngredients,
+    setHasIngredients,
+    setFilteredDrinks,
   };
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const IngredientCard = ({ index, src, name }) => (
-  <div data-testid={ `${index}-ingredient-card` }>
+  <div>
     <img data-testid={ `${index}-card-img` } src={ src } alt={ name } />
     <p data-testid={ `${index}-card-name` }>{ name }</p>
   </div>
