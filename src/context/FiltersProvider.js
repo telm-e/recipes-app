@@ -12,6 +12,7 @@ const FiltersProvider = ({ children }) => {
     const NUM = 12;
     const drinks2Render = drinks.slice(0, NUM);
     setFilteredDrinks(drinks2Render);
+    // console.log(filteredDrinks);
   };
 
   const context = {

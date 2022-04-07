@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DrinkCategories from '../components/DrinkCategories';
 import DrinkMainData from '../components/DrinkMainData';
+import FiltersContext from '../context/filtersContext';
 
 function Drinks() {
   const {
@@ -15,9 +16,10 @@ function Drinks() {
     recepies,
     isSearchDisabled,
   } = useContext(recepiesContext);
+  const { filteredDrinks } = useContext(FiltersContext);
 
   const notFoundAlert = 'Sorry, we haven\'t found any recipes for these filters.';
-
+  console.log(filteredDrinks);
   return (
     <div>
       <div>
@@ -27,21 +29,32 @@ function Drinks() {
         isSearchDisabled && <DrinkSearchHeader />
       }
       <DrinkCategories />
+
       {
-        searchStatus ? (
-          <div>
-            {
-              loading ? <Loading /> : (
-                <div>
-                  {
-                    recepies.drinks === null ? global.alert(notFoundAlert) : (
-                      <DrinkSearchResults />)
-                  }
-                </div>
-              )
-            }
-          </div>)
-          : (
+        filteredDrinks?.map(({ idDrink, strDrink, strDrinkThumb }) => (
+          <button key={ idDrink } type="button">
+            <p>{strDrink}</p>
+            <img src={ strDrinkThumb } alt={ strDrink } />
+          </button>
+        ))
+      }
+
+      {
+        searchStatus
+          ? (
+            <div>
+              {
+                loading ? <Loading /> : (
+                  <div>
+                    {
+                      recepies.drinks === null ? global.alert(notFoundAlert) : (
+                        <DrinkSearchResults />)
+                    }
+                  </div>
+                )
+              }
+            </div>
+          ) : (
             <DrinkMainData />
           )
       }
