@@ -8,10 +8,16 @@ import ButtonFavorite from '../components/ButtonFavorite';
 function InProgressDrinks(props) {
   const [getDrinks, setDrinks] = useState();
   const [getMeals, setGetMeals] = useState();
+  const [checkList, setCheckList] = useState([]);
 
   const { match: { params: { id } } } = props;
 
   useEffect(() => {
+    const checked = JSON.parse(localStorage.getItem('ingredients'));
+    if (checked !== null) {
+      setCheckList(checked);
+    }
+
     const getApiDrink = async () => {
       const { drinks } = await (
         await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)).json();
@@ -55,6 +61,25 @@ function InProgressDrinks(props) {
     position: 'fixed',
     bottom: '0',
   };
+
+  function onChange({ target }) {
+    const initialList = [];
+    if (checkList.length === 0) {
+      ingredients.forEach((each, i) => {
+        console.log(each);
+        initialList[i] = false;
+      });
+      initialList[target.id] = true;
+      setCheckList(initialList);
+      localStorage.setItem('ingredients', JSON.stringify(initialList));
+    } else {
+      const list = checkList;
+      list[target.id] = !list[target.id];
+      setCheckList(list);
+      console.log(list);
+      localStorage.setItem('ingredients', JSON.stringify(list));
+    }
+  }
 
   return (
     <section>
@@ -107,6 +132,8 @@ function InProgressDrinks(props) {
                   <input
                     id={ index }
                     type="checkbox"
+                    checked={ checkList[index] }
+                    onChange={ onChange }
                   />
                   { `- ${item} - ${measures[index]}` }
                 </li>))
