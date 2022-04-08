@@ -2,10 +2,10 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-export default function Nationalities() {
+export default function ExploreFoods() {
   return (
     <div>
-      <Header title=" Explore Nationalities" search profile />
+      <Header title="Explore Foods" search={ false } profile />
       <Footer />
     </div>
   );

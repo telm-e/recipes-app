@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Button from '../components/Button';
 
 const Explore = () => {
@@ -26,7 +27,7 @@ const Explore = () => {
           history.push('/explore/drinks');
         } }
       />
-      {/* <Footer />  quando pronto vai aqui */}
+      <Footer />
     </>
   );
 };

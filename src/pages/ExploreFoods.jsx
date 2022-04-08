@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import { getRandomMeal } from '../services/APIcalls/getRandom';
+import Footer from '../components/Footer';
 
 function ExploreFoods() {
   const history = useHistory();
@@ -36,7 +37,7 @@ function ExploreFoods() {
         value="Surprise me!"
         onClick={ handleSurpriseMeClick }
       />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

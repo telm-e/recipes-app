@@ -44,9 +44,14 @@ function FoodMainData() {
     })();
   }, [searchCategory]);
 
+  const style = {
+    display: 'flex',
+    justifyContent: 'space-around',
+  };
+
   return (
     // renderiza cards de receitas
-    <div>
+    <div style={ style }>
       { (data.map((each, index) => (
         <Card
           key={ index }
