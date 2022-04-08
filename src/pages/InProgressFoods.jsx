@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
+import FinishButton from '../components/FinishButton';
 import ButtonShare from '../components/ButtonShare';
 import ButtonFavorite from '../components/ButtonFavorite';
 
 function InProgressFoods(props) {
   const [getMeals, setGetMeals] = useState([]);
   const [getDrinks, setGetDrinks] = useState([]);
+  const [checkList, setCheckList] = useState([]);
 
   const { match: { params: { id } } } = props;
 
   // Verifica se a requisição para a API de comidas foi realizada
   useEffect(() => {
+    const checked = JSON.parse(localStorage.getItem('ingredients'));
+    if (checked !== null) {
+      setCheckList(checked);
+    }
+
     const getApiMeal = async () => {
       const { meals } = await (await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)).json();
       setGetMeals(meals);
@@ -50,6 +57,25 @@ function InProgressFoods(props) {
     position: 'fixed',
     bottom: '0',
   };
+
+  function onChange({ target }) {
+    const initialList = [];
+    if (checkList.length === 0) {
+      ingredients.forEach((each, i) => {
+        console.log(each);
+        initialList[i] = false;
+      });
+      initialList[target.id] = true;
+      setCheckList(initialList);
+      localStorage.setItem('ingredients', JSON.stringify(initialList));
+    } else {
+      const list = checkList;
+      list[target.id] = !list[target.id];
+      setCheckList(list);
+      console.log(list);
+      localStorage.setItem('ingredients', JSON.stringify(list));
+    }
+  }
 
   return (
     <section>
@@ -92,6 +118,8 @@ function InProgressFoods(props) {
                   <input
                     id={ index }
                     type="checkbox"
+                    checked={ checkList[index] }
+                    onChange={ onChange }
                   />
                   { `- ${item} - ${measures[index]}` }
                 </li>))
@@ -113,11 +141,7 @@ function InProgressFoods(props) {
           to="/done-recipes"
           data-testid="finish-recipe-btn"
         >
-          <button
-            type="button"
-          >
-            Finish recipe
-          </button>
+          <FinishButton id={ id } page="meals" />
         </Link>
       </div>
     </section>

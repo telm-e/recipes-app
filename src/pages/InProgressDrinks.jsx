@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
+import FinishButton from '../components/FinishButton';
 import ButtonShare from '../components/ButtonShare';
 import ButtonFavorite from '../components/ButtonFavorite';
 
@@ -131,11 +132,7 @@ function InProgressDrinks(props) {
           to="/done-recipes"
           data-testid="finish-recipe-btn"
         >
-          <button
-            type="button"
-          >
-            Finish recipe
-          </button>
+          <FinishButton id={ id } page="cocktails" />
         </Link>
       </div>
 
