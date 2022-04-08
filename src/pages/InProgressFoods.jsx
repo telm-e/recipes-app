@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
 import ButtonShare from '../components/ButtonShare';
 import ButtonFavorite from '../components/ButtonFavorite';
@@ -9,7 +9,6 @@ function InProgressFoods(props) {
   const [getDrinks, setGetDrinks] = useState([]);
 
   const { match: { params: { id } } } = props;
-  const history = useHistory();
 
   // Verifica se a requisição para a API de comidas foi realizada
   useEffect(() => {
@@ -46,16 +45,7 @@ function InProgressFoods(props) {
     .filter((item) => ((item[1]) && item[1] !== ' ' ? item[1] : false))
     .map((item) => item[1]);
 
-  const recipe = {
-    id,
-    type: 'food',
-    nationality: strArea,
-    category: strCategory,
-    alcoholicOrNot: '',
-    name: strMeal,
-    image: strMealThumb,
-  };
-    // Desenvolva um botão de nome "Finish Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
+  // Desenvolva um botão de nome "Finish Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
   const style = {
     position: 'fixed',
     bottom: '0',
@@ -73,8 +63,20 @@ function InProgressFoods(props) {
       <div>
         <div>
           <h1 data-testid="recipe-title">{ strMeal }</h1>
-          <ButtonShare path={ history.location.pathname } />
-          <ButtonFavorite recipe={ recipe } />
+          <ButtonShare path={ `/foods/${id}` } />
+          <ButtonFavorite
+            id={ id }
+            testid="favorite-btn"
+            favoriteRecipe={ {
+              id,
+              type: 'food',
+              nationality: strArea,
+              category: strCategory,
+              alcoholicOrNot: '',
+              name: strMeal,
+              image: strMealThumb,
+            } }
+          />
         </div>
         <h3 data-testid="recipe-category" style={ { color: 'gray' } }>{ strCategory }</h3>
         <div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
 import ButtonShare from '../components/ButtonShare';
 import ButtonFavorite from '../components/ButtonFavorite';
@@ -9,7 +9,6 @@ function InProgressDrinks(props) {
   const [getMeals, setGetMeals] = useState();
 
   const { match: { params: { id } } } = props;
-  const history = useHistory();
 
   useEffect(() => {
     const getApiDrink = async () => {
@@ -50,15 +49,6 @@ function InProgressDrinks(props) {
     .filter((item) => ((item[1]) && item[1] !== ' ' ? item[1] : false))
     .map((item) => item[1]);
 
-  const recipe = {
-    id,
-    type: 'drink',
-    nationality: '',
-    category: 'Cocktail',
-    alcoholicOrNot: strAlcoholic,
-    name: strDrink,
-    image: strDrinkThumb,
-  };
   // Desenvolva um botão de nome "Start Recipe" que deve ficar fixo na parte de baixo da tela o tempo todo
   const style = {
     position: 'fixed',
@@ -78,8 +68,21 @@ function InProgressDrinks(props) {
       <div>
         <div>
           <h1 data-testid="recipe-title">{ strDrink }</h1>
-          <ButtonShare path={ history.location.pathname } />
-          <ButtonFavorite recipe={ recipe } />
+          <ButtonShare path={ `/drinks/${id}` } />
+          <ButtonFavorite
+            id={ id }
+            testid="favorite-btn"
+            favoriteRecipe={ {
+              id,
+              type: 'drink',
+              nationality: '',
+              category: 'Cocktail',
+              alcoholicOrNot: strAlcoholic,
+              name: strDrink,
+              image: strDrinkThumb,
+
+            } }
+          />
         </div>
 
         <h3 data-testid="recipe-category" style={ { color: 'gray' } }>

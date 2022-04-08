@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import getDrinksIngredientsList from '../services/APIcalls/getDrinksIngredientsList';
 import IngredientCard from '../components/CardIngredients';
 import FiltersContext from '../context/filtersContext';
@@ -53,6 +54,7 @@ const ExploreDrinksIngredients = () => {
           </button>
         ))
       }
+      <Footer />
     </>
   );
 };
