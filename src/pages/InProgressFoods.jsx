@@ -9,6 +9,7 @@ function InProgressFoods(props) {
   const [getMeals, setGetMeals] = useState([]);
   const [getDrinks, setGetDrinks] = useState([]);
   const [checkList, setCheckList] = useState([]);
+  const [isBtnDisabled, setBtn] = useState(true);
 
   const { match: { params: { id } } } = props;
 
@@ -65,15 +66,17 @@ function InProgressFoods(props) {
         console.log(each);
         initialList[i] = false;
       });
-      initialList[target.id] = true;
+      initialList[target.id] = target.checked;
       setCheckList(initialList);
       localStorage.setItem('ingredients', JSON.stringify(initialList));
     } else {
       const list = checkList;
-      list[target.id] = !list[target.id];
+      list[target.id] = target.checked;
       setCheckList(list);
-      console.log(list);
       localStorage.setItem('ingredients', JSON.stringify(list));
+      if (!list.includes(false)) {
+        setBtn(false);
+      }
     }
   }
 
@@ -118,7 +121,6 @@ function InProgressFoods(props) {
                   <input
                     id={ index }
                     type="checkbox"
-                    checked={ checkList[index] }
                     onChange={ onChange }
                   />
                   { `- ${item} - ${measures[index]}` }
@@ -141,7 +143,7 @@ function InProgressFoods(props) {
           to="/done-recipes"
           data-testid="finish-recipe-btn"
         >
-          <FinishButton id={ id } page="meals" />
+          <FinishButton id={ id } page="meals" isDisabled={ isBtnDisabled } />
         </Link>
       </div>
     </section>

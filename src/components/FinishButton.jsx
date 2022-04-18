@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function FinishButton(props) {
-  const { id, page } = props;
+  const { id, page, isDisabled } = props;
   const [finished, setFinished] = useState({ meals: [], cocktails: [] });
 
   useEffect(() => {
@@ -44,6 +44,7 @@ export default function FinishButton(props) {
       }
       type="button"
       onClick={ () => finishedRecepies() }
+      disabled={ isDisabled }
     >
       Finish Recipe
     </button>
@@ -53,4 +54,5 @@ export default function FinishButton(props) {
 FinishButton.propTypes = {
   id: PropTypes.number,
   page: PropTypes.string,
+  isDisabled: PropTypes.bool,
 }.isRequired;

@@ -69,15 +69,17 @@ function InProgressDrinks(props) {
         console.log(each);
         initialList[i] = false;
       });
-      initialList[target.id] = true;
+      initialList[target.id] = target.checked;
       setCheckList(initialList);
       localStorage.setItem('ingredients', JSON.stringify(initialList));
     } else {
       const list = checkList;
-      list[target.id] = !list[target.id];
+      list[target.id] = target.checked;
       setCheckList(list);
-      console.log(list);
       localStorage.setItem('ingredients', JSON.stringify(list));
+      if (!list.includes(false)) {
+        setBtn(false);
+      }
     }
   }
 
@@ -132,7 +134,6 @@ function InProgressDrinks(props) {
                   <input
                     id={ index }
                     type="checkbox"
-                    checked={ checkList[index] }
                     onChange={ onChange }
                   />
                   { `- ${item} - ${measures[index]}` }
